@@ -1,0 +1,32 @@
+
+ 
+    struct Node {
+        int data;
+        struct Node* next;
+    }
+*/
+
+bool has_cycle(Node* head) {
+    
+    if ( NULL == head )
+        return false;
+    
+    Node *temp = head;
+    Node **visit = new Node *[200];
+    int num=0;
+    while (temp )
+    {
+        for (int i=0; i<num; i++)
+        {
+            if ( visit[i] == temp )
+            {
+                delete [] visit;
+                return true;
+            }
+        }
+        visit[num++] =temp;
+        
+            temp = temp->next;
+    }
+    return false;
+}
